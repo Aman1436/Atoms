@@ -4,6 +4,8 @@ const path = require("path");
 
 require("./db/conn");
 const Student = require("./models/signup");
+const Professor = require("./models/professors");
+const Manager = require("./models/managers");
 
 const port = 3000;
 
@@ -69,6 +71,50 @@ app.post('/signup', async(req,res)=>{
         }
     } catch (error){
         res.status(400).send(error);
+    }
+});
+
+//Login-professor page
+
+app.get('/login-professor', (req,res)=>{
+    res.render("login-professor");
+});
+
+app.post('/login-professor', async (req,res)=>{
+    try {
+        const profId = req.body.profId;
+        const password = req.body.password;
+        const userInfo = await Professor.findOne({profId:profId});
+        if(userInfo.password === password) {
+            res.status(201).render("home");
+        } else {
+            res.send("Invalid details");
+        }
+
+    } catch (error){
+        res.status(400).send("Invalid details");
+    }
+});
+
+//Login-manager page
+
+app.get('/login-manager', (req,res)=>{
+    res.render("login-manager");
+});
+
+app.post('/login-manager', async (req,res)=>{
+    try {
+        const managerId = req.body.managerId;
+        const password = req.body.password;
+        const userInfo = await Manager.findOne({managerId:managerId});
+        if(userInfo.password === password) {
+            res.status(201).render("home");
+        } else {
+            res.send("Invalid details");
+        }
+
+    } catch (error){
+        res.status(400).send("Invalid details");
     }
 });
 
