@@ -1,0 +1,75 @@
+.wrapper {
+    width: 30rem;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    padding-top: 0.5rem;
+    padding-bottom: .5rem;
+}
+
+.info, .dropboxes, .password-area {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+#registration{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    margin-left: rem;
+    margin-top: -.8em;
+}
+
+.dropboxes select {
+    /* appearance: none; */
+    border: none;
+    outline: none;
+    width: 12rem;
+    height: 1.8rem;
+    background: transparent;
+    border: 2px solid rgb(255, 255, 255, 0.5);
+    border-radius: 40px;
+    color: white;
+    box-shadow: 0 0 4px -1px black;
+    font-size: 0.95rem;
+    padding: 0 25px 0 25px;
+}
+
+.wrapper .input-box input{
+    width: 12.1rem;
+    height: 1.8rem;
+    border: 2px solid rgb(255, 255, 255, 0.5);
+}
+
+.dropboxes select:focus {
+    box-shadow: 0 0 10px -1px #931dff;  
+}
+
+.dropboxes select option {
+    color: black;
+    background-color: rgb(0, 0, 0, 0.1);
+}
+
+
+.wrapper .btn {
+    margin-left: 7.8rem;
+}
+
+.password-area {
+    margin-bottom: 1rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    margin-top: -1.4rem;
+}
+
+#roomNo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

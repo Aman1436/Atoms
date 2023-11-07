@@ -1,0 +1,36 @@
+body {
+    background: url("/images/mountain-night-sky-landscape-vector.jpg") no-repeat;
+    background-size: cover;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    position: relative;
+    top: 0;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.sections {
+    display: flex;
+}
+
+.content {
+    width: 70%;
+    height: 100vh;
+    background: yellow;
+}
+
+.complains {
+    margin: 7px 5px 0 5px;
+    padding: 2px;
+    height: 30rem;
+    width: 30%;
+    background-color: white;
+    border-radius: 0.7rem;
+    box-shadow: 0 0 8px -1px black;
+}
