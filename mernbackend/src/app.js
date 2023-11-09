@@ -1,19 +1,21 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const cors = require("cors");
 
 require("./db/conn");
 const Student = require("./models/signup");
+const Complaint = require("./models/complaint");
+const port = 8080;
 
-const port = 3000;
-
+app.use(cors());
 app.use(express.static(path.join(__dirname, "../public")));  // to access public folder
 
 // to access views folder
 app.set("view engine","ejs");
 app.set("views", path.join(__dirname, "../views"));
 app.use(express.json());
-app.use(express.urlencoded({extended:false}));
+app.use(express.urlencoded({extended:true}));
 
 
 // Landing page
@@ -41,6 +43,7 @@ app.post('/login', async(req,res)=>{
         res.status(400).send("Invalid details");
     }
 });
+
 
 // Signup page
 app.get('/signup', (req,res)=>{
@@ -72,6 +75,40 @@ app.post('/signup', async(req,res)=>{
     }
 });
 
+//for complaints section
+app.get("/:regNo/complaint",async function(req,res){
+            try {
+                await Complaint.find().sort({votes:-1})
+                .then(allComplaints=>res.json(allComplaints))
+                .catch(err=>res.json(err))
+            } catch (err) {
+                return res.json(err);
+            }
+     })
+app.put("/:id/complaint/upvote",async function(req,res){
+        try{
+            const comp=await Complaint.findById(req.body.complaintId)
+            await Complaint.findByIdAndUpdate(req.body.complaintId,{votes:comp.votes+1})
+            await Complaint.find().sort({votes:-1})
+            .then(allComplaints=>res.json(allComplaints))
+            .catch(err=>res.json(err))
+        }
+        catch (err){
+            return res.json(err);
+        }
+ })
+ app.put("/:id/complaint/downvote",async function(req,res){
+    try{
+        const comp=await Complaint.findById(req.body.complaintId)
+        await Complaint.findByIdAndUpdate(req.body.complaintId,{votes:comp.votes-1})
+        await Complaint.find().sort({votes:-1})
+        .then(allComplaints=>res.json(allComplaints))
+        .catch(err=>res.json(err))
+    }
+    catch (err){
+        return res.json(err);
+    }
+})
 // Home page
 app.get("/home", (req,res)=>{
     res.render("home");

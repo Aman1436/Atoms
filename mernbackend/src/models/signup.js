@@ -9,7 +9,7 @@ const studentSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    regNo : {
+    regNo :{
         type:String,
         required:true,
         unique:true
@@ -24,7 +24,7 @@ const studentSchema = new mongoose.Schema({
     },
     roomNo : {
         type:String,
-        required:true, 
+        required:true
     },
     password : {
         type:String,
