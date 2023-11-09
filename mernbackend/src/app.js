@@ -17,6 +17,15 @@ app.set("views", path.join(__dirname, "../views"));
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
+//day
+var today = new Date();
+var options = {
+    weekday: "long",
+    day: "numeric",
+    month: "long"
+};
+let day = today.toDateString("en-US", options);
+
 
 // Landing page
 app.get('/', (req,res)=>{
@@ -34,7 +43,7 @@ app.post('/login', async(req,res)=>{
         const password = req.body.password;
         const userInfo = await Student.findOne({regNo:regNo});
         if(userInfo.password === password) {
-            res.status(201).render("home");
+            res.status(201).render("home" , {day: day});
         } else {
             res.send("Invalid details");
         }
@@ -65,7 +74,7 @@ app.post('/signup', async(req,res)=>{
                 Cpassword: req.body.Cpassword
             })
             const registered = await student.save();
-            res.status(201).render("home"); 
+            res.status(201).render("home" , {day: day}); 
         } else {
             res.send("password are not matching")
         }
@@ -86,7 +95,7 @@ app.post('/login-professor', async (req,res)=>{
         const password = req.body.password;
         const userInfo = await Professor.findOne({profId:profId});
         if(userInfo.password === password) {
-            res.status(201).render("home");
+            res.status(201).render("home" , {day: day});
         } else {
             res.send("Invalid details");
         }
@@ -108,7 +117,7 @@ app.post('/login-manager', async (req,res)=>{
         const password = req.body.password;
         const userInfo = await Manager.findOne({managerId:managerId});
         if(userInfo.password === password) {
-            res.status(201).render("home");
+            res.status(201).render("home" , {day: day});
         } else {
             res.send("Invalid details");
         }
@@ -120,7 +129,7 @@ app.post('/login-manager', async (req,res)=>{
 
 // Home page
 app.get("/home", (req,res)=>{
-    res.render("home");
+    res.render("home" , {day: day});
 });
 
 
