@@ -7,6 +7,8 @@ require("./db/conn");
 const Student = require("./models/signup");
 const Complaint = require("./models/complaint");
 const port = 8080;
+const Professor = require("./models/professors");
+const Manager = require("./models/managers");
 
 app.use(cors());
 app.use(express.static(path.join(__dirname, "../public")));  // to access public folder
@@ -16,6 +18,15 @@ app.set("view engine","ejs");
 app.set("views", path.join(__dirname, "../views"));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+
+//day
+var today = new Date();
+var options = {
+    weekday: "long",
+    day: "numeric",
+    month: "long"
+};
+let day = today.toDateString("en-US", options);
 
 
 // Landing page
@@ -34,7 +45,7 @@ app.post('/login', async(req,res)=>{
         const password = req.body.password;
         const userInfo = await Student.findOne({regNo:regNo});
         if(userInfo.password === password) {
-            res.status(201).render("home");
+            res.status(201).render("home" , {day: day});
         } else {
             res.send("Invalid details");
         }
@@ -66,7 +77,7 @@ app.post('/signup', async(req,res)=>{
                 Cpassword: req.body.Cpassword
             })
             const registered = await student.save();
-            res.status(201).render("home"); 
+            res.status(201).render("home" , {day: day}); 
         } else {
             res.send("password are not matching")
         }
@@ -109,9 +120,53 @@ app.put("/:id/complaint/upvote",async function(req,res){
         return res.json(err);
     }
 })
+//Login-professor page
+
+app.get('/login-professor', (req,res)=>{
+    res.render("login-professor");
+});
+
+app.post('/login-professor', async (req,res)=>{
+    try {
+        const profId = req.body.profId;
+        const password = req.body.password;
+        const userInfo = await Professor.findOne({profId:profId});
+        if(userInfo.password === password) {
+            res.status(201).render("home" , {day: day});
+        } else {
+            res.send("Invalid details");
+        }
+
+    } catch (error){
+        res.status(400).send("Invalid details");
+    }
+});
+
+//Login-manager page
+
+app.get('/login-manager', (req,res)=>{
+    res.render("login-manager");
+});
+
+app.post('/login-manager', async (req,res)=>{
+    try {
+        const managerId = req.body.managerId;
+        const password = req.body.password;
+        const userInfo = await Manager.findOne({managerId:managerId});
+        if(userInfo.password === password) {
+            res.status(201).render("home" , {day: day});
+        } else {
+            res.send("Invalid details");
+        }
+
+    } catch (error){
+        res.status(400).send("Invalid details");
+    }
+});
+
 // Home page
 app.get("/home", (req,res)=>{
-    res.render("home");
+    res.render("home" , {day: day});
 });
 
 

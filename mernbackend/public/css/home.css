@@ -1,6 +1,8 @@
 body {
-    background: url("/images/mountain-night-sky-landscape-vector.jpg") no-repeat;
+    background: url("/images/home-background.jpg") no-repeat;
     background-size: cover;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
 }
 
 .main {
@@ -19,18 +21,197 @@ body {
     display: flex;
 }
 
-.content {
-    width: 70%;
-    height: 100vh;
-    background: yellow;
+.student-info {
+    position: relative;
+    max-width: fit-content;
+    margin-left: 2rem;
 }
 
-.complains {
-    margin: 7px 5px 0 5px;
+.student-info .name {
+    position: relative;
+}
+.student-info .regno {
+    position: relative;
+}
+
+.student-info p {
+    margin-left: 2rem;
+    margin-top: 1rem;
+    color: white;
+    font-size: 1rem;
+}
+
+.content {
+    width: 70%;
+    height: fit-content;
+}
+
+.notification {
+    width: 22rem;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    height: fit-content;
+}
+
+.notification .notification-box {
+    overflow: scroll;
+    overflow-x: hidden;
+    margin: 1rem 1.2rem 0 5px;
     padding: 2px;
-    height: 30rem;
-    width: 30%;
-    background-color: white;
+    height: 25rem;
+    width: 83%;
+    background-color: #cccccc;
     border-radius: 0.7rem;
     box-shadow: 0 0 8px -1px black;
+    display: none;
+    animation: fade-in 499ms forwards;
+}
+
+.notification .notification-icon {
+    height: 2rem;
+    width: 2rem;
+    margin: 2rem 2rem 0 2rem;
+    border: 2px solid white;
+    border-radius: 5px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.notification-box .notification-message {
+    height: fit-content;
+    width: fit-content;
+    background-color: rgb(204, 255, 204);
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 0.4rem 0.6rem;
+    box-shadow: 0 0 2px -1px black;
+}
+
+.notification-box .notification-message p {
+    padding: 0.4rem 0.4rem 0 0.4rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-align: left;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.notification-container .date {
+    width: 100%;
+    text-align: center;
+    justify-self: center;
+    font-size: 0.6rem;
+    color: rgb(0, 0, 0, 0.6);
+    padding: 0.5rem;
+}
+
+/* Slider starts */
+.slider {
+    margin: 2rem 2rem;
+    height: 25rem;
+    width: 46.8rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 0 8px -1px black;
+    border: 2px solid rgb(255, 255, 255, 0.1);
+}
+
+.slides {
+    display: flex !important;
+}
+
+.slider img{
+    height: 25rem;
+    width: 47rem;
+    border-radius: 1rem;
+    padding: 2px;
+    padding-right: 10px;
+    background-color: rgb(255, 255, 255, 0.4);
+}
+
+.slides input{
+    display: none; 
+}
+
+.slide {
+    width: 100%;
+    transition: 2s;
+}
+
+/* css for mannual slide navigation */
+.navigation-manual {
+    width: 100%;
+    margin-top: -40px;
+    display: flex;
+    justify-content:center;
+}
+
+.manual-btn {
+    border: 2px solid white;
+    padding: 3px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+    margin-right: 1.7rem;
+}
+
+.manual-btn:hover {
+    background-color: #AB9B95;
+}
+
+#radio1:checked ~ .first{
+    margin-left: 0;
+}
+
+#radio2:checked ~ .first{
+    margin-left: -100%;
+}
+
+#radio3:checked ~ .first{
+    margin-left: -200%;
+}
+
+#radio4:checked ~ .first{
+    margin-left: -300%;
+}
+
+#radio5:checked ~ .first{
+    margin-left: -400%;
+}
+
+/* .slides .text {
+    position: absolute;
+    color: white;
+    z-index: 10;
+} */
+
+/* Slider ends */
+
+
+
+
+/* keyframes */
+@keyframes showRight {
+    from {
+        left: 0%;
+    } to {
+        left: 100%;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.gg{
+    color:blueviolet;
+    text-align: justify;
 }
