@@ -22,11 +22,11 @@ body {
 .content {
     width: 70%;
     height: 100vh;
-    background: yellow;
+    /* background: yellow; */
 }
 
 .complains {
-    margin: 7px 5px 0 5px;
+    margin: 2rem 5px 0 5px;
     padding: 2px;
     height: 30rem;
     width: 30%;
@@ -34,3 +34,90 @@ body {
     border-radius: 0.7rem;
     box-shadow: 0 0 8px -1px black;
 }
+
+.student-info {
+    height: 4rem;
+    width: 40rem;
+}
+
+/* Slider starts */
+.slider {
+    margin: 2rem 2rem;
+    height: 25rem;
+    width: 46.8rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 0 8px -1px black;
+    border: 2px solid rgb(255, 255, 255, 0.1);
+}
+
+.slides {
+    display: flex !important;
+}
+
+.slider img{
+    height: 25rem;
+    width: 47rem;
+    border-radius: 1rem;
+    padding: 2px;
+    padding-right: 10px;
+    background-color: rgb(255, 255, 255, 0.4);
+}
+
+.slides input{
+    display: none; 
+}
+
+.slide {
+    width: 100%;
+    transition: 2s;
+}
+
+/* css for mannual slide navigation */
+.navigation-manual {
+    width: 100%;
+    margin-top: -40px;
+    display: flex;
+    justify-content:center;
+}
+
+.manual-btn {
+    border: 2px solid white;
+    padding: 3px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+    margin-right: 1.7rem;
+}
+
+.manual-btn:hover {
+    background-color: #AB9B95;
+}
+
+#radio1:checked ~ .first{
+    margin-left: 0;
+}
+
+#radio2:checked ~ .first{
+    margin-left: -100%;
+}
+
+#radio3:checked ~ .first{
+    margin-left: -200%;
+}
+
+#radio4:checked ~ .first{
+    margin-left: -300%;
+}
+
+#radio5:checked ~ .first{
+    margin-left: -400%;
+}
+
+/* .slides .text {
+    position: absolute;
+    color: white;
+    z-index: 10;
+} */
+
+/* Slider ends */
