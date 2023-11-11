@@ -76,8 +76,7 @@ body::before{
     border-radius: 0.7rem;
     box-shadow: 0 0 8px -1px black;
     display: none;
-    animation: fade-in 500ms forwards;
-    box-shadow: 0 0 8px -1px black;
+    animation: fade-in 499ms forwards;
 }
 
 .notification .notification-box::before {
@@ -255,4 +254,9 @@ body::before{
     100% {
         opacity: 1;
     }
+}
+
+.gg{
+    color:blueviolet;
+    text-align: justify;
 }
