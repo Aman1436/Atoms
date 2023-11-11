@@ -6,6 +6,7 @@ require("./db/conn");
 const Student = require("./models/signup");
 const Professor = require("./models/professors");
 const Manager = require("./models/managers");
+const Notification = require("./models/notification");
 
 const port = 3000;
 
@@ -17,14 +18,17 @@ app.set("views", path.join(__dirname, "../views"));
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
-//day
-var today = new Date();
-var options = {
-    weekday: "long",
-    day: "numeric",
-    month: "long"
-};
-let day = today.toDateString("en-US", options);
+// Things required in home page
+    //day
+    var today = new Date();
+    var options = {
+        day: "numeric",
+        month: "long"
+    };
+    let dateTime = today.toDateString("en-US", options);
+    let hrs = today.getHours();
+    let min = today.getMinutes();
+    let day = dateTime + "," + hrs + ":" + min;
 
 
 // Landing page
@@ -128,9 +132,29 @@ app.post('/login-manager', async (req,res)=>{
 });
 
 // Home page
-app.get("/home", (req,res)=>{
-    res.render("home" , {day: day});
+app.get("/home", async (req,res)=>{
+    try {
+        const data = await Notification.find();
+        res.render("home" , {day: day, data});
+    } catch (error) {
+        console.log(error);
+    }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
