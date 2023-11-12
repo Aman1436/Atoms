@@ -11,6 +11,7 @@ const Complaint = require("./models/complaint");
 const port = 8080;
 const Professor = require("./models/professors");
 const Manager = require("./models/managers");
+const Notification = require("./models/notification");
 
 //some middlewares
 app.use(cors());
@@ -23,14 +24,17 @@ app.set("view engine","ejs");
 app.set("views", path.join(__dirname, "../views"));
 
 
-//day
-var today = new Date();
-var options = {
-    weekday: "long",
-    day: "numeric",
-    month: "long"
-};
-let day = today.toDateString("en-US", options);
+// Things required in home page
+    //day
+    var today = new Date();
+    var options = {
+        day: "numeric",
+        month: "long"
+    };
+    let dateTime = today.toDateString("en-US", options);
+    let hrs = today.getHours();
+    let min = today.getMinutes();
+    let day = dateTime + "," + hrs + ":" + min;
 
 
 // Landing page
@@ -177,8 +181,13 @@ app.post('/login-manager', async (req,res)=>{
 
 // Home page
 app.get("/home",async(req,res)=>{
+    try{
     const userInfo=await Student.findOne({regNo:req.query.regNo})
-    res.render("home" , {day: day,userInfo:userInfo});
+        const data = await Notification.find();
+        res.render("home" , {day: day, data:data,userInfo:userInfo});
+    } catch (error) {
+        console.log(error);
+    }
 });
 
 app.post('/:regNo/complaint/submit',async(req,res)=>{
@@ -188,6 +197,21 @@ app.post('/:regNo/complaint/submit',async(req,res)=>{
         .then(allComplaints=>res.json(allComplaints))
         .catch(err=>res.json(err))
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 app.listen(port, ()=>{
     console.log("Server is running at port ", port);

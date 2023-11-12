@@ -74,36 +74,16 @@
                     <i class="fa-solid fa-bell" style="color: #ffffff;"></i>
                 </div>
                 <div class="notification-box">
-                    <div class="notification-container">
-                        <div class="date"><%=day%></div>
-                        <div class="notification-message">
-                            <p>Mess refund will be debited to students till 30th november 2023</p>
+                    <% data.forEach(notification => { %>
+                        <div class="notification-container">
+                            <div class="date">
+                                <span class="date-box"><%=notification.createdAt.toDateString()%></span>
+                            </div>
+                            <div class="notification-message">
+                                <p><%=notification.message%></p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="notification-container">
-                        <div class="date"><%=day%></div>
-                        <div class="notification-message">
-                            <p>Mess will be closed from 10th november to 19th november...Students are requested to return their home safely</p>
-                        </div>
-                    </div>
-                    <div class="notification-container">
-                        <div class="date"><%=day%></div>
-                        <div class="notification-message">
-                            <p>Mess will be closed from 10th november to 19th november...</p>
-                        </div>
-                    </div>
-                    <div class="notification-container">
-                        <div class="date"><%=day%></div>
-                        <div class="notification-message">
-                            <p>Students are requested to return their home safely</p>
-                        </div>
-                    </div>
-                    <div class="notification-container">
-                        <div class="date"><%=day%></div>
-                        <div class="notification-message">
-                            <p>Enjoy your vacations</p>
-                        </div>
-                    </div>
+                    <% }) %>
                 </div>
             </div>
         </div>
