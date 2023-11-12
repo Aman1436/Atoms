@@ -8,7 +8,6 @@ const complaintSchema = new mongoose.Schema({
     regNo : {
         type:String,
         required:true,
-        unique:false
     },
     votes:{
         type:Number,

@@ -21,7 +21,7 @@
         <%- include("includes/main-navbar.ejs") %>
         <div class="sections">
             <div class="content">
-                <div class="student-info"><p><span class="name">Welcome Chirag...</span><br><span class="regno">Regestration number :- 20223075</span></p></div>
+                <div class="student-info"><p><span class="name">Welcome <%= userInfo.Fname%> <%= userInfo.Lname %>...</span><br><span class="regno">Registration number :- <%= userInfo.regNo %></span></p></div>
                 <div class="slider">
                     <div class="slides">
                         <!-- radio buttons start-->

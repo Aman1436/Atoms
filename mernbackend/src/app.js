@@ -2,7 +2,9 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const cors = require("cors");
+const brypt=require('bcryptjs');
 
+//database connection requiring models
 require("./db/conn");
 const Student = require("./models/signup");
 const Complaint = require("./models/complaint");
@@ -10,14 +12,16 @@ const port = 8080;
 const Professor = require("./models/professors");
 const Manager = require("./models/managers");
 
+//some middlewares
 app.use(cors());
-app.use(express.static(path.join(__dirname, "../public")));  // to access public folder
+app.use(express.static(path.join(__dirname, "../public"))); 
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 
 // to access views folder
 app.set("view engine","ejs");
 app.set("views", path.join(__dirname, "../views"));
-app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+
 
 //day
 var today = new Date();
@@ -35,21 +39,21 @@ app.get('/', (req,res)=>{
 });
 
 // Login page
-app.get('/login', (req,res)=>{
+app.get('/login',(req,res)=>{
     res.render("login");
 });
 
-app.post('/login', async(req,res)=>{
+app.post('/login',async(req,res)=>{
     try {
         const regNo = req.body.regNo;
         const password = req.body.password;
         const userInfo = await Student.findOne({regNo:regNo});
-        if(userInfo.password === password) {
-            res.status(201).render("home" , {day: day});
+        const check=await brypt.compare(password,userInfo.password)
+        if(check) {
+            res.redirect("/home?regNo="+regNo);
         } else {
             res.send("Invalid details");
         }
-
     } catch (error){
         res.status(400).send("Invalid details");
     }
@@ -65,7 +69,12 @@ app.post('/signup', async(req,res)=>{
     try {
         const password =req.body.password;
         const Cpassword = req.body.Cpassword;
-        if(password === Cpassword) {
+       const existingUser= await Student.findOne({regNo:req.body.regNo})
+        if(existingUser){
+            res.status(409).json({msg:"Registration number already exists!"});
+            res.redirect('/signup')
+        }
+        else if(password === Cpassword) {
             const student = new Student({
                 Fname: req.body.Fname,
                 Lname: req.body.Lname,
@@ -76,8 +85,9 @@ app.post('/signup', async(req,res)=>{
                 password: req.body.password,
                 Cpassword: req.body.Cpassword
             })
+          
             const registered = await student.save();
-            res.status(201).render("home" , {day: day}); 
+            res.status(201).redirect('/login'); 
         } else {
             res.send("password are not matching")
         }
@@ -120,6 +130,7 @@ app.put("/:id/complaint/upvote",async function(req,res){
         return res.json(err);
     }
 })
+
 //Login-professor page
 
 app.get('/login-professor', (req,res)=>{
@@ -165,11 +176,18 @@ app.post('/login-manager', async (req,res)=>{
 });
 
 // Home page
-app.get("/home", (req,res)=>{
-    res.render("home" , {day: day});
+app.get("/home",async(req,res)=>{
+    const userInfo=await Student.findOne({regNo:req.query.regNo})
+    res.render("home" , {day: day,userInfo:userInfo});
 });
 
-
+app.post('/:regNo/complaint/submit',async(req,res)=>{
+  const newcomplaint=await new Complaint({regNo:req.body.regNo,complaint:req.body.complaintText})
+  await newcomplaint.save();
+  await Complaint.find().sort({votes:-1})
+        .then(allComplaints=>res.json(allComplaints))
+        .catch(err=>res.json(err))
+})
 
 app.listen(port, ()=>{
     console.log("Server is running at port ", port);
