@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mess Menu</title>
+    <link rel="stylesheet" href="mernbackend\public\css\mess_menu.css">
+  </head>
+  <body>
+    <!--title-->
+    <h1 id="title">Mess Menu</h1>
+    <!--Monday,Tuesday-->
+    <div id="d12">
+      <!--Monday-->
+      <div>
+        <h3>Monday</h3>
+        <p>BreakFast: Idli-Sambhar,Milk,Sprouts,Banana</p>
+        <p>Lunch: Paneer,puri,pulao,Gulab-Jamun</p>
+        <p>Evening: Samosa,Green Chutney,Tea</p>
+        <p>Dinner: Soyabean aloo,Roti,Rice,custard</p>
+      </div>
+      <!-- Tuesday -->
+      <div>
+        <h3>Tuesday</h3>
+        <p>Breakfast: Upma, Curd, Mixed Fruits</p>
+        <p>Lunch: Rajma, Chapati, Jeera Rice, Raita</p>
+        <p>Evening: Veg Cutlet, Mint Chutney, Buttermilk</p>
+        <p>Dinner: Vegetable Biryani, Dal, Kheer</p>
+      </div>
+    </div>
+    <div id="d34">
+      <!-- Wednesday -->
+      <div>
+        <h3>Wednesday</h3>
+        <p>Breakfast: Poha, Lassi, Apple</p>
+        <p>Lunch: Bhindi Masala, Naan, Steamed Rice, Salad</p>
+        <p>Evening: Dhokla, Tamarind Chutney, Tea</p>
+        <p>Dinner: Palak Paneer, Roti, Jeera Rice, Fruit Salad</p>
+      </div>
+
+      <!-- Thursday -->
+      <div>
+        <h3>Thursday</h3>
+        <p>Breakfast: Daliya, Curd, Orange</p>
+        <p>Lunch: Chana Masala, Chapati, Brown Rice, Cucumber Raita</p>
+        <p>Evening: Aloo Tikki, Yogurt Dip, Chaas</p>
+        <p>Dinner: Mix Veg Curry, Paratha, Pulao, Shahi Tukda</p>
+      </div>
+    </div>
+    <div id="d56">
+      <!-- Friday -->
+      <div>
+        <h3>Friday</h3>
+        <p>Breakfast: Vegetable Sandwich, Banana Shake</p>
+        <p>Lunch: Aloo Gobi, Phulka, Jeera Rice, Boondi Raita</p>
+        <p>Evening: Vegetable Pakora, Mint Yogurt Sauce, Tea</p>
+        <p>Dinner: Dal Makhani, Naan, Steamed Rice, Fruit Custard</p>
+      </div >
+
+      <!-- Saturday -->
+      <div >
+        <h3>Saturday</h3>
+        <p>Breakfast: Rava Upma, Buttermilk, Grapes</p>
+        <p>Lunch: Baingan Bharta, Chapati, Vegetable Pulao, Cucumber Raita</p>
+        <p>Evening: Kachori, Tamarind Chutney, Chaas</p>
+        <p>Dinner: Kadai Paneer, Roti, Jeera Rice, Gajar Ka Halwa</p>
+      </div>
+    </div>
+    <div id="d7">
+      <!-- Sunday -->
+      <div>
+        <h3>Sunday</h3>
+        <p>Breakfast: Masala Dosa, Coconut Chutney, Pineapple</p>
+        <p>Lunch: Dum Aloo, Naan, Steamed Rice, Boondi Raita</p>
+        <p>Evening: Vegetable Spring Rolls, Sweet Chili Sauce, Tea</p>
+        <p>Dinner: Vegetable Korma, Paratha, Jeera Rice, Mango Lassi</p>
+      </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+  const containers = document.querySelectorAll(".container > div");
+  containers.forEach(container => {
+    container.classList.add("animate");
+  });
+});
+
+    </script>
+  </body>
+</html>
