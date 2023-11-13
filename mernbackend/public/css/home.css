@@ -1,8 +1,19 @@
 body {
-    background: url("/images/home-background.jpg") no-repeat;
-    background-size: cover;
+    position: relative;
     font-family: 'Montserrat', sans-serif;
     overflow: hidden;
+}
+
+body::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: url("/images/home-background.jpg") no-repeat;
+    background-size: cover;
+    z-index: -11;
 }
 
 .main {
@@ -55,17 +66,42 @@ body {
 }
 
 .notification .notification-box {
+    position: relative;
     overflow: scroll;
     overflow-x: hidden;
-    margin: 1rem 1.2rem 0 5px;
-    padding: 2px;
+    margin: 1rem 1.2rem 0 1rem;
+    padding: 6px;
     height: 25rem;
-    width: 83%;
-    background-color: #cccccc;
+    width: 87%;
     border-radius: 0.7rem;
     box-shadow: 0 0 8px -1px black;
     display: none;
     animation: fade-in 499ms forwards;
+}
+
+.notification .notification-box::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: url("/images/notification-background.jpg") no-repeat;
+    background-size: cover;
+    filter: blur(1px);
+    z-index: -1;
+}
+
+.notification .notification-box::-webkit-scrollbar {
+    width: 0.8rem;
+}
+
+.notification .notification-box::-webkit-scrollbar-track {
+    background: rgb(255, 255, 255, 0.4);
+}
+
+.notification .notification-box::-webkit-scrollbar-thumb {
+    background: rgb(255, 255, 255, 0.8);
 }
 
 .notification .notification-icon {
@@ -83,29 +119,38 @@ body {
 
 .notification-box .notification-message {
     height: fit-content;
-    width: fit-content;
-    background-color: rgb(204, 255, 204);
+    max-width: fit-content;
+    background-color: rgb(210, 255, 205);
     border: 2px solid black;
     border-radius: 5px;
-    margin: 0.4rem 0.6rem;
+    padding: 6px;
     box-shadow: 0 0 2px -1px black;
+    
 }
 
 .notification-box .notification-message p {
-    padding: 0.4rem 0.4rem 0 0.4rem;
-    font-size: 0.8rem;
+    margin-bottom: 0;
+    font-size: 0.65rem;
     font-weight: 600;
     text-align: left;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
 }
 
 .notification-container .date {
     width: 100%;
     text-align: center;
     justify-self: center;
-    font-size: 0.6rem;
-    color: rgb(0, 0, 0, 0.6);
+    font-size: 0.55rem;
+    color: rgb(255, 255, 255, 0.8);
     padding: 0.5rem;
+}
+
+.date .date-box {
+    height: 100%;
+    width: fit-content;
+    background-color: rgb(0, 0, 0, 0.6);
+    padding: 6px 8px;
+    border-radius: 1rem;
 }
 
 /* Slider starts */
@@ -159,7 +204,7 @@ body {
 }
 
 .manual-btn:hover {
-    background-color: #AB9B95;
+    background-color: grey;
 }
 
 #radio1:checked ~ .first{

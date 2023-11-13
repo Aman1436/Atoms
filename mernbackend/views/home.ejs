@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
     <link rel="stylesheet" href="\css\home.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- boxicons -->
@@ -21,7 +21,7 @@
         <%- include("includes/main-navbar.ejs") %>
         <div class="sections">
             <div class="content">
-                <div class="student-info"><p><span class="name">Welcome Chirag...</span><br><span class="regno">Regestration number :- 20223075</span></p></div>
+                <div class="student-info"><p><span class="name">Welcome <%= userInfo.Fname%> <%= userInfo.Lname %>...</span><br><span class="regno">Registration number :- <%= userInfo.regNo %></span></p></div>
                 <div class="slider">
                     <div class="slides">
                         <!-- radio buttons start-->
@@ -74,36 +74,16 @@
                     <i class="fa-solid fa-bell" style="color: #ffffff;"></i>
                 </div>
                 <div class="notification-box">
-                    <div class="notification-container">
-                        <div class="date"><%=day%></div>
-                        <div class="notification-message">
-                            <p>Mess refund will be debited to students till 30th november 2023</p>
+                    <% data.forEach(notification => { %>
+                        <div class="notification-container">
+                            <div class="date">
+                                <span class="date-box"><%=notification.createdAt.toDateString()%></span>
+                            </div>
+                            <div class="notification-message">
+                                <p><%=notification.message%></p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="notification-container">
-                        <div class="date"><%=day%></div>
-                        <div class="notification-message">
-                            <p>Mess will be closed from 10th november to 19th november...Students are requested to return their home safely</p>
-                        </div>
-                    </div>
-                    <div class="notification-container">
-                        <div class="date"><%=day%></div>
-                        <div class="notification-message">
-                            <p>Mess will be closed from 10th november to 19th november...</p>
-                        </div>
-                    </div>
-                    <div class="notification-container">
-                        <div class="date"><%=day%></div>
-                        <div class="notification-message">
-                            <p>Students are requested to return their home safely</p>
-                        </div>
-                    </div>
-                    <div class="notification-container">
-                        <div class="date"><%=day%></div>
-                        <div class="notification-message">
-                            <p>Enjoy your vacations</p>
-                        </div>
-                    </div>
+                    <% }) %>
                 </div>
             </div>
         </div>
