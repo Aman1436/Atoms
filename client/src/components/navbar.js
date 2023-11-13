@@ -16,9 +16,9 @@ function NavScrollExample({regNo}) {
             style={{ maxHeight: '100px',display:'flex',alignItems:'flex-end'}}
             navbarScroll
           >
-            <Nav.Link href="#action1">Home</Nav.Link>
-            <Nav.Link href="#action2">Menu</Nav.Link>
-            <Nav.Link href="#action2">View Complaints</Nav.Link>
+            <Nav.Link href ={"http://localhost:8080/home?regNo="+regNo}>Home</Nav.Link>
+            <Nav.Link href="#">Menu</Nav.Link>
+            <Nav.Link href="#">View Complaints</Nav.Link>
            
           </Nav>
         </Navbar.Collapse>
