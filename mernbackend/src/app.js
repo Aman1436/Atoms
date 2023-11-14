@@ -230,6 +230,11 @@ app.post("/:regNo/complaint/submit", async (req, res) => {
     .catch((err) => res.json(err));
 });
 
+// Menu page
+app.get("/menu", (req, res) => {
+  res.render("menu");
+});
+
 app.listen(port, () => {
   console.log("Server is running at port ", port);
 });

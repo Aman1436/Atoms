@@ -25,7 +25,7 @@ body::before{
     position: relative;
     top: 0;
     width: 100%;
-    margin-bottom: 0;
+    margin-bottom: 0.5rem;
 }
 
 .sections {
@@ -76,20 +76,10 @@ body::before{
     border-radius: 0.7rem;
     box-shadow: 0 0 8px -1px black;
     display: none;
-    animation: fade-in 499ms forwards;
-}
-
-.notification .notification-box::before {
-    content: '';
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background: url("/images/notification-background.jpg") no-repeat;
+    background: url("/images/notification-background.jpg");
+    background-blend-mode: lighten;
     background-size: cover;
-    filter: blur(1px);
-    z-index: -1;
+    animation: fade-in 499ms forwards;
 }
 
 .notification .notification-box::-webkit-scrollbar {
