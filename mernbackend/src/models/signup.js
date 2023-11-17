@@ -36,9 +36,9 @@ const studentSchema = new mongoose.Schema({
     }
 })
 
-
+//bcrypt code to hash password
 studentSchema.pre('save',async function(next){
-    if(this.isModified('password')){
+    if(this.isModified('password')){  // means use when somebody changes the password
         this.password= await bcrypt.hash(this.password,11);
         this.Cpassword= await bcrypt.hash(this.Cpassword,11);
     }

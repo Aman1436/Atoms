@@ -14,6 +14,10 @@ const managerSchema = new mongoose.Schema({
         required:true,
         unique:true
     },
+    hostel : {
+        type:String,
+        required:true,
+    },
     password : {
         type:String,
         required:true, 

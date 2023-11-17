@@ -15,11 +15,14 @@ const Complaint = require("./models/complaint");
 const port = 8080;
 const Professor = require("./models/professors");
 const Manager = require("./models/managers");
-const Notification = require("./models/notification");
+const patelNotification = require("./models/patel-notification");
+const tilakNotification = require("./models/tilak-notification");
+const tandonNotification = require("./models/tandon-notification");
+
 
 //some middlewares
 app.use(cors());
-app.use(express.static(path.join(__dirname, "../public")));1
+app.use(express.static(path.join(__dirname, "../public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -69,6 +72,7 @@ app.post("/login", async (req, res) => {
     const regNo = req.body.regNo;
     const password = req.body.password;
     const userInfo = await Student.findOne({ regNo: regNo });
+    const hostel = userInfo.hostel;
     const check = await brypt.compare(password, userInfo.password);
     if (check) {
       const token = jwt.sign(
@@ -192,27 +196,69 @@ app.get("/login-manager", (req, res) => {
   res.render("login-manager");
 });
 
+let hostel = "";
+
 app.post("/login-manager", async (req, res) => {
   try {
     const managerId = req.body.managerId;
     const password = req.body.password;
     const userInfo = await Manager.findOne({ managerId: managerId });
+    hostel = userInfo.hostel;
+    // async function addMessage(m) {
+    //   console.log("Hello from me");
+    //   if(hostel == "patel") {
+    //     await patelNotification.insertMany([{message:m}]);
+    //   }
+    //   else if(hostel == "tandon") {
+    //     await tandonNotification.insertMany([{message:m}]);
+    //   }
+    //   else {
+    //     await tilakNotification.insertMany([{message:m}]);
+    //   }
+    // }
+    let data = [];  
+    if(userInfo.hostel == "patel") {
+      data = await patelNotification.find();
+    }
+    else if(userInfo.hostel == "tandon") {
+      data = await tandonNotification.find();
+    }
+    else {
+      data = await tilakNotification.find();
+    }
     if (userInfo.password === password) {
-      res.status(201).render("home", { day: day });
+      res.status(201).render("home-manager", {userInfo:userInfo, day: day, data:data});
     } else {
-      res.send("Invalid details");
+      res.send("Invalid details render");
     }
   } catch (error) {
+    console.log(error);
     res.status(400).send("Invalid details");
   }
 });
+
+app.get("/list", (req, res)=>{
+  res.render("list", {day:day});
+})
+
+
+
 
 // Home page
 app.get("/home", isloggedin, async (req, res) => {
   try {
     const userInfo = await Student.findOne({ regNo: req.query.regNo });
-    const data = await Notification.find();
-    res.render("home", { day: day, data: data, userInfo: userInfo });
+    const hostel = userInfo.hostel;
+    if(hostel === "patel") {
+      const data = await patelNotification.find();
+      res.render("home", { day: day, data: data, userInfo: userInfo });
+    } else if (hostel === "tilak") {
+      const data = await tilakNotification.find();
+      res.render("home", { day: day, data: data, userInfo: userInfo });
+    } else if (hostel === "tandon") {
+      const data = await tandonNotification.find();
+      res.render("home", { day: day, data: data, userInfo: userInfo });
+    }
   } catch (error) {
     console.log(error);
   }
@@ -234,6 +280,10 @@ app.post("/:regNo/complaint/submit", async (req, res) => {
 app.get("/menu", (req, res) => {
   res.render("menu");
 });
+
+
+
+
 
 app.listen(port, () => {
   console.log("Server is running at port ", port);

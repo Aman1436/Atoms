@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="\css\home-manager.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main">
+        <%- include("includes/main-navbar.ejs") %>
+        <div class="sections">
+            <div class="content">
+                <div class="student-info"><p><span class="name">Welcome Manager...</span><br><span class="regno">Manager Id :- 1234678</span></p></div>
+                <div class="slider">
+                    <div class="slides">
+                        <!-- radio buttons start-->
+                        <input type="radio" name="slide" id="radio1">
+                        <input type="radio" name="slide" id="radio2">
+                        <input type="radio" name="slide" id="radio3">
+                        <input type="radio" name="slide" id="radio4">
+                        <input type="radio" name="slide" id="radio5">
+                        <!-- radio buttons end -->
+                        <!-- Slide Images start -->
+                        <div class="slide first">
+                            <img src="/images/slide1.jpg" alt="none">
+                        </div>
+                        <div class="slide">
+                            <img src="/images/slide2.jpg" alt="none">
+                        </div>
+                        <div class="slide">
+                            <img src="/images/slide3.jpg" alt="none">
+                        </div>
+                        <div class="slide">
+                            <img src="/images/slide4.jpg" alt="none">
+                        </div>
+                        <div class="slide">
+                            <img src="/images/slide5.jpg" alt="none">
+                        </div>
+                        <!-- Automatic navigation start -->
+                        <div class="navigation-auto">
+                            <div class="auto-btn1"></div>
+                            <div class="auto-btn2"></div>
+                            <div class="auto-btn3"></div>
+                            <div class="auto-btn4"></div>
+                            <div class="auto-btn5"></div>
+                        </div>
+                        <!-- Automatic navigation end -->
+                        <!-- Slide Images end -->
+                    </div>
+                        <!-- Mannual navigation start -->
+                    <div class="navigation-manual">
+                        <label for="radio1" class="manual-btn 1"></label>
+                        <label for="radio2" class="manual-btn 2"></label>
+                        <label for="radio3" class="manual-btn 3"></label>
+                        <label for="radio4" class="manual-btn 4"></label>
+                        <label for="radio5" class="manual-btn 5"></label>
+                    </div>
+                        <!-- Mannual navigation end --> 
+                </div>
+            </div>
+            <div class="notification">
+                <div class="notification-icon" onclick="hide()">
+                    <i class="fa-solid fa-bell" style="color: #ffffff;"></i>
+                </div>
+                <div class="notification-box">
+                    <% data.forEach(notification => { %>
+                        <div class="notification-container">
+                            <div class="date">
+                                <span class="date-box"><%=notification.createdAt.toDateString()%></span>
+                            </div>
+                            <div class="notification-message">
+                                <p><%=notification.message%></p>
+                            </div>
+                        </div>
+                    <% }) %>
+                    <div class="createNotification">
+                        <input type="text" name="newMessage" id="newMessage" spellcheck="off" placeholder="New Message">
+                        <button class="send"><i class="fa-solid fa-paper-plane icon"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script>
+        
+        let counter = 1;
+        setInterval(function() {
+            document.getElementById('radio' + counter).checked = true;
+            document.get
+            counter++;
+            if(counter > 5) {
+                counter = 1;
+            }
+        }, 5000);
+
+        let icon = document.querySelector(".notification-icon");
+        const box = document.querySelector(".notification-box");
+        function hide() {
+            if(box.style.display === "none") {
+                box.style.display = "block";
+            }
+            else {
+                box.style.display = "none";
+            }
+        };
+
+        // const input = document.querySelector("#newMessage");
+        // function addMessage() {
+        //     console.log(input.value);
+        //     input.value = "";
+        // }
+    </script>
+</body>
+</html>
