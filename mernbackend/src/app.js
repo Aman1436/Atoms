@@ -179,9 +179,10 @@ app.post("/login-professor", async (req, res) => {
   try {
     const profId = req.body.profId;
     const password = req.body.password;
+    const data = await patelNotification.find();
     const userInfo = await Professor.findOne({ profId: profId });
     if (userInfo.password === password) {
-      res.status(201).render("home", { day: day });
+      res.status(201).render("home-professor", {userInfo:userInfo, day: day, data:data });
     } else {
       res.send("Invalid details");
     }
@@ -204,18 +205,6 @@ app.post("/login-manager", async (req, res) => {
     const password = req.body.password;
     const userInfo = await Manager.findOne({ managerId: managerId });
     hostel = userInfo.hostel;
-    // async function addMessage(m) {
-    //   console.log("Hello from me");
-    //   if(hostel == "patel") {
-    //     await patelNotification.insertMany([{message:m}]);
-    //   }
-    //   else if(hostel == "tandon") {
-    //     await tandonNotification.insertMany([{message:m}]);
-    //   }
-    //   else {
-    //     await tilakNotification.insertMany([{message:m}]);
-    //   }
-    // }
     let data = [];  
     if(userInfo.hostel == "patel") {
       data = await patelNotification.find();
@@ -241,8 +230,23 @@ app.get("/list", (req, res)=>{
   res.render("list", {day:day});
 })
 
-
-
+app.post("/add-message", async (req, res)=>{
+  const m = req.body.newMessage;
+    if(m != "") {
+      if(hostel == "patel") {
+        await patelNotification.insertMany([{message:m}]);
+      }
+      else if(hostel == "tandon") {
+        await tandonNotification.insertMany([{message:m}]);
+      }
+      else {
+        await tilakNotification.insertMany([{message:m}]);
+      }
+      res.redirect('back');
+    } else {
+      res.send("Add a message to send the notification");
+    }
+})
 
 // Home page
 app.get("/home", isloggedin, async (req, res) => {
@@ -281,7 +285,10 @@ app.get("/menu", (req, res) => {
   res.render("menu");
 });
 
-
+// Contact us
+app.get("/contact", (req, res) => {
+  res.render("contact");
+});
 
 
 

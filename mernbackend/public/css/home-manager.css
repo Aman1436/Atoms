@@ -143,13 +143,16 @@ body::before{
 }
 
 .createNotification {
-    position:sticky;
+    position: sticky;
     margin-top: 1rem;
     top: 22rem;
-    display: flex;
-    justify-content: space-between;
     margin-bottom: 1rem;
     z-index: 2;
+}
+
+form {
+    display: flex;
+    justify-content: space-between;
 }
 
 #newMessage {
@@ -222,7 +225,7 @@ body::before{
 }
 
 .manual-btn {
-    border: 2px solid white;
+    border: 2px solid rgb(0, 0, 0, 0.6);;
     padding: 3px;
     border-radius: 10px;
     cursor: pointer;

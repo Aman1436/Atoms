@@ -18,7 +18,7 @@
 </head>
 <body>
     <div class="main">
-        <%- include("includes/main-navbar.ejs") %>
+        <%- include("includes/manager-navbar.ejs") %>
         <div class="sections">
             <div class="content">
                 <div class="student-info"><p><span class="name">Welcome Manager...</span><br><span class="regno">Manager Id :- 1234678</span></p></div>
@@ -33,19 +33,19 @@
                         <!-- radio buttons end -->
                         <!-- Slide Images start -->
                         <div class="slide first">
-                            <img src="/images/slide1.jpg" alt="none">
+                            <img src="/images/slides/slide1.jpeg" alt="none">
                         </div>
                         <div class="slide">
-                            <img src="/images/slide2.jpg" alt="none">
+                            <img src="/images/slides/slide2.png" alt="none">
                         </div>
                         <div class="slide">
-                            <img src="/images/slide3.jpg" alt="none">
+                            <img src="/images/slides/slide3.jpg" alt="none">
                         </div>
                         <div class="slide">
-                            <img src="/images/slide4.jpg" alt="none">
+                            <img src="/images/slides/slide4.jpg" alt="none">
                         </div>
                         <div class="slide">
-                            <img src="/images/slide5.jpg" alt="none">
+                            <img src="/images/slides/slide5.png" alt="none">
                         </div>
                         <!-- Automatic navigation start -->
                         <div class="navigation-auto">
@@ -71,7 +71,7 @@
             </div>
             <div class="notification">
                 <div class="notification-icon" onclick="hide()">
-                    <i class="fa-solid fa-bell" style="color: #ffffff;"></i>
+                    <i class="fa-solid fa-bell" style="color: #fff;"></i>
                 </div>
                 <div class="notification-box">
                     <% data.forEach(notification => { %>
@@ -85,8 +85,10 @@
                         </div>
                     <% }) %>
                     <div class="createNotification">
-                        <input type="text" name="newMessage" id="newMessage" spellcheck="off" placeholder="New Message">
-                        <button class="send"><i class="fa-solid fa-paper-plane icon"></i></button>
+                        <form action="/add-message" method="post">
+                            <input type="text" name="newMessage" id="newMessage" spellcheck="off" placeholder="New Message">
+                            <button class="send" type="submit"><i class="fa-solid fa-paper-plane icon"></i></button>
+                        </form>
                     </div>
                 </div>
             </div>
