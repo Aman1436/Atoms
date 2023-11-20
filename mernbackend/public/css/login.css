@@ -10,8 +10,8 @@ body {
     align-items: center;
     min-width: 100%;
     min-height: 100vh;
-    background: url("/images/home-background.jpg") no-repeat;
-    background-size: cover;
+    background: url("/images/main-background.jpeg") no-repeat;
+    background-size:cover;
 }
 
 .wrapper {
@@ -22,6 +22,9 @@ body {
     border-radius: 10px;
     padding: 30px 40px;
     border: 1.5px solid white;
+    box-shadow: 0 0 5px -1px white;
+    position: relative;
+    left: -5rem;
 }
 
 .wrapper h1 {
@@ -70,6 +73,8 @@ body {
     cursor: pointer;
     font-size: 1rem;
     margin-bottom: 1.6rem;
+    background-color: orange;
+    border: 1px solid black;
 }
 
 .wrapper .btn:hover {

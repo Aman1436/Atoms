@@ -11,7 +11,7 @@ body::before{
     width: 100%;
     top: 0;
     left: 0;
-    background: url("/images/home-background.jpg") no-repeat;
+    background: url("/images/main-background.jpeg") no-repeat;
     background-size: cover;
     z-index: -11;
 }
@@ -104,6 +104,17 @@ body::before{
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    transition: .5s;
+}
+
+.notification .notification-icon:hover {
+    height: 2.2rem;
+    width: 2.2rem;
+}
+
+.notification .notification-icon i:hover {
+    font-size: 1.2rem;
+    animation: ring 1.5s 0s 2 alternate;
 }
 
 .notification-box .notification-message {
@@ -174,6 +185,7 @@ form {
     border-radius: 50%;
     color: rgb(210, 255, 205);
     background-color: rgb(0, 0, 0, 0.9);
+    box-shadow: 0 0 4px -1px white;
     border: none;
     outline: none;
 }
@@ -286,7 +298,17 @@ form {
     }
 }
 
-.gg{
-    color:blueviolet;
-    text-align: justify;
+@keyframes ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(45deg);
+    }
+    50% {
+        transform: rotate(-45deg);
+    } 
+    100% {
+        transform: rotate(45deg);
+    }
 }

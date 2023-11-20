@@ -7,7 +7,7 @@
     <style>
 
         html {
-            background: url("/images/bc.jpg") no-repeat;
+            background: url("/images/main-background.jpeg") no-repeat;
             background-size: cover;
             background-attachment: fixed;
         }
@@ -100,8 +100,8 @@
             height: 2rem;
             width: 5rem;
             border-radius: 5px;
-            color: rgb(226 66 101);
-            border: 2px solid rgb(226 66 101);
+            color: white;
+            border: 2px solid white;
             background-color: transparent;
             overflow: hidden;
             font-size: 0.9rem;
@@ -109,25 +109,15 @@
             z-index: 1;
         }
 
-        .input-box .button::before {
-            content: '';
-            height: 100%;
-            width: 0;
-            top: 0;
-            left: 0;
-            position: absolute;
-            background-color: rgb(225 88 98);
-            z-index: -1;
-            transition: 0.5s;
-        }
-
         .input-box .button:hover {
-            color: white;
-            border: 2px solid rgb(214 195 84);
-        }
-
-        .input-box .button:hover::before {
-            width: 100%;
+            
+            box-shadow:
+                0 0 .5rem #fff,
+                inset 0 0 .5rem #fff,
+                0 0 2rem #08f,
+                inset 0 0 2rem #08f,
+                0 0 4rem #08f,
+                inset 0 0 4rem #08f;
         }
 
         .list-box {
