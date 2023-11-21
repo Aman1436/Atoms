@@ -38,6 +38,14 @@ function App(){
         console.log(err)
       })
   }
+  const submitcomplaint=async(complaintText)=>{
+    await axios.post('http://localhost:8080/:regNo/complaint/submit',{complaintText:complaintText,regNo:regNo}).then(res=>{
+      setComplaints(res.data)
+    })
+    .catch(err=>{
+      console.log(err)
+    })
+}
   
   return (
     <div className='app'>
