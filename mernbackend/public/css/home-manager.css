@@ -74,7 +74,7 @@ body::before{
     height: 25rem;
     width: 87%;
     border-radius: 0.7rem;
-    box-shadow: 0 0 6px -1px white;
+    box-shadow: 0 0 8px -1px black;
     background: url("/images/notification-background.jpg");
     background-size: cover;
     display: none;
@@ -117,7 +117,6 @@ body::before{
     animation: ring 1.5s 0s 2 alternate;
 }
 
-
 .notification-box .notification-message {
     height: fit-content;
     max-width: fit-content;
@@ -126,6 +125,7 @@ body::before{
     border-radius: 5px;
     padding: 6px;
     box-shadow: 0 0 2px -1px black;
+    
 }
 
 .notification-box .notification-message p {
@@ -151,6 +151,48 @@ body::before{
     background-color: rgb(0, 0, 0, 0.6);
     padding: 6px 8px;
     border-radius: 1rem;
+}
+
+.createNotification {
+    position: sticky;
+    margin-top: 1rem;
+    top: 22rem;
+    margin-bottom: 1rem;
+    z-index: 2;
+}
+
+form {
+    display: flex;
+    justify-content: space-between;
+}
+
+#newMessage {
+    position:sticky;
+    width: 85%;
+    border-radius: 50rem;
+    height: 2rem;
+    border: none;
+    outline: none;
+    font-size: 0.7rem;
+    padding: 0.5rem;
+}
+
+#newMessage::placeholder {
+    font-size: 0.8rem;
+}
+
+.send {
+    border-radius: 50%;
+    color: rgb(210, 255, 205);
+    background-color: rgb(0, 0, 0, 0.9);
+    box-shadow: 0 0 4px -1px white;
+    border: none;
+    outline: none;
+}
+
+.send .icon {
+    position: relative;
+    left: -1px;
 }
 
 /* Slider starts */
@@ -195,11 +237,11 @@ body::before{
 }
 
 .manual-btn {
-    border: 2px solid rgb(0, 0, 0, 0.6);
+    border: 2px solid rgb(0, 0, 0, 0.6);;
     padding: 3px;
     border-radius: 10px;
     cursor: pointer;
-    transition: .3s;
+    transition: 1s;
     margin-right: 1.7rem;
 }
 

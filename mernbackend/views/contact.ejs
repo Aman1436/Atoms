@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="/css/contact.css">
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+    (function(){
+        emailjs.init("eNA5Ys48qL5cTzPX2");
+    })();
+    </script>
+</head>
+<body>
+    <div class="container">
+        <form onsubmit="sendEmail(); reset(); return false;">
+            <h1>GET IN TOUCH</h1>
+            <div class="input-box">
+                <input type="text" name="name" id="name" placeholder="Your Name" autocomplete="off" required>
+            </div>
+            <div class="input-box">
+                <input type="email" name="emal" id="email" placeholder="Email id" autocomplete="off" required>
+            </div>
+            <div class="input-box">
+                <input type="text" name="phone" id="phone" placeholder="Phone no." autocomplete="off" required>
+            </div>
+            <div class="input-box">
+                <textarea name="message" id="message" rows="4" placeholder="How can we help you?" autocomplete="off"></textarea>
+            </div>
+            <button type="submit" class="btn" name="btn">Send</button>
+        </form>
+    </div>
+    <script>
+        function sendEmail() {
+            var params = {
+                name : document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                phone: document.getElementById("phone").value,
+                message: document.getElementById("message").value,
+            };
+            const serviceID = "service_ddch76v";
+            const templateID = "template_h4solzo";
+
+            emailjs.send(serviceID,templateID,params)
+            .then((res)=>{
+                document.getElementById("name").value = "";
+                document.getElementById("email").value = "";
+                document.getElementById("message").value = "";
+                alert("Your message sent sucessfully");
+            })
+            .catch((err)=>console.log(err));
+        }
+
+        
+    </script>
+</body>
+</html>

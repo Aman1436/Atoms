@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="\css\home.css">
+    <link rel="stylesheet" href="\css\home-manager.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- boxicons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -18,10 +18,10 @@
 </head>
 <body>
     <div class="main">
-        <%- include("includes/main-navbar.ejs") %>
+        <%- include("includes/manager-navbar.ejs") %>
         <div class="sections">
             <div class="content">
-                <div class="student-info"><p><span class="name">Welcome <%= userInfo.Fname%> <%= userInfo.Lname %>...</span><br><span class="regno">Registration number :- <%= userInfo.regNo %></span></p></div>
+                <div class="student-info"><p><span class="name">Welcome Manager...</span><br><span class="regno">Manager Id :- 1234678</span></p></div>
                 <div class="slider">
                     <div class="slides">
                         <!-- radio buttons start-->
@@ -71,7 +71,7 @@
             </div>
             <div class="notification">
                 <div class="notification-icon" onclick="hide()">
-                    <i class="fa-solid fa-bell" style="color: #ffffff;"></i>
+                    <i class="fa-solid fa-bell" style="color: #fff;"></i>
                 </div>
                 <div class="notification-box">
                     <% data.forEach(notification => { %>
@@ -84,12 +84,19 @@
                             </div>
                         </div>
                     <% }) %>
+                    <div class="createNotification">
+                        <form action="/add-message" method="post">
+                            <input type="text" name="newMessage" id="newMessage" spellcheck="off" placeholder="New Message">
+                            <button class="send" type="submit"><i class="fa-solid fa-paper-plane icon"></i></button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script>
+        
         let counter = 1;
         setInterval(function() {
             document.getElementById('radio' + counter).checked = true;
@@ -100,9 +107,9 @@
             }
         }, 5000);
 
-        // let icon = document.querySelector(".notification-icon");
-        let box = document.querySelector(".notification-box");
-        function hide () {
+        let icon = document.querySelector(".notification-icon");
+        const box = document.querySelector(".notification-box");
+        function hide() {
             if(box.style.display === "none") {
                 box.style.display = "block";
             }
@@ -110,6 +117,12 @@
                 box.style.display = "none";
             }
         };
+
+        // const input = document.querySelector("#newMessage");
+        // function addMessage() {
+        //     console.log(input.value);
+        //     input.value = "";
+        // }
     </script>
 </body>
 </html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily List</title>
+    <style>
+
+        html {
+            background: url("/images/main-background.jpeg") no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        body {
+            height: 100%;
+            width: 100%;
+            background-color: rgb(0,0,0,0.1 );  
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            color: white;
+        }
+
+        .date {
+            font-size: 1rem;
+        }
+        
+        .heading p{
+            font-size: 3rem;
+            padding: 1rem 3rem 1rem;
+            margin: 2rem 0rem;
+            color: #fff;
+            font-weight: 400;
+            border: 0.1rem solid #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-family: 'Poppins', sans-serif;
+            font-family: 'Prata', serif;
+            font-family: 'Sanchez', serif;
+            font-family: 'Satisfy', cursive;
+            text-shadow:
+                    -0.2rem -0.2rem 1rem #fff,
+                    0.2rem 0.2rem 1rem #fff,
+                    0 0 2rem #f40,
+                    0 0 4rem #f40,
+                    0 0 6rem #f40,
+                    0 0 8rem #f40,
+                    0 0 10rem #f40;
+            box-shadow:
+                0 0 .5rem #fff,
+                inset 0 0 .5rem #fff,
+                0 0 2rem #08f,
+                inset 0 0 2rem #08f,
+                0 0 4rem #08f,
+                inset 0 0 4rem #08f;
+        }
+
+        .heading p::-moz-selection {
+            background-color: #08f;
+            color: #f40;
+        }
+
+        .heading p::selection {
+            background-color: #08f;
+            color: #f40;
+        }
+
+        .input-box {
+            margin: 2rem;
+        }
+
+        .input-box .input {
+            margin: 0 2rem;
+            border: none;
+            outline: none;
+            height: 2rem;
+            width: 15rem;
+            border-bottom: 2px solid white;
+            padding: 0px 1rem;
+            background-color: transparent;
+            color: white;
+            font-size: 1rem;
+            font-weight: 500;
+            font-family: 'Montserrat', sans-serif;
+            font-family: 'Poppins', sans-serif;
+            font-family: 'Prata', serif;
+            font-family: 'Sanchez', serif;
+        }
+
+        input[type="text"]:focus {
+            text-decoration: none;
+            box-shadow: inset 0 -3px 0 0 black;
+        }
+
+        .input-box .button {
+            position: relative;
+            border: none;
+            outline: none;
+            height: 2rem;
+            width: 5rem;
+            border-radius: 5px;
+            color: white;
+            border: 2px solid white;
+            background-color: transparent;
+            overflow: hidden;
+            font-size: 0.9rem;
+            font-weight: 600;
+            z-index: 1;
+        }
+
+        .input-box .button:hover {
+            
+            box-shadow:
+                0 0 .5rem #fff,
+                inset 0 0 .5rem #fff,
+                0 0 2rem #08f,
+                inset 0 0 2rem #08f,
+                0 0 4rem #08f,
+                inset 0 0 4rem #08f;
+        }
+
+        .list-box {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .list-box .list-heading {
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin: 2rem 0rem;
+            font-family:'Times New Roman', Times, serif;
+            width: 100%;
+            text-align: center;
+        }
+
+        .list-box .list-body {
+            margin: 0 2rem;
+        }
+
+        .list-box .list-body ul{
+            width: 95%;
+            height: fit-content;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .list-box .list .item {
+            min-height: 1.2rem;
+            min-width: 8rem;
+            height: fit-content;
+            width: fit-content;
+            margin: 0.5rem;
+            text-align: center;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+            border-radius: 5px;
+        }
+
+        .icon {
+            max-height: .9rem;
+            max-width: .9rem;
+            height: fit-content;   
+            width: fit-content;
+            padding: 0 .5rem 0 1rem;
+            opacity: 0.3;
+            margin: 0;
+        }
+
+        .icon:hover {
+            opacity: 1;
+        }
+        
+
+    </style>
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;600;700&family=Prata&family=Sanchez&family=Satisfy&display=swap" rel="stylesheet">
+    <!-- Font awsome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="heading"><p>Daily Items</p></div>
+    <div class="date"><%=day.substring(0,15)%></div>
+    <div class="input-box">
+        <input type="text" class="input" spellcheck="false">
+        <button class="button">Add</button>
+    </div>
+    <div class="list-box">
+        <div class="list-heading">List Items<hr color="white" width="90%"></div>
+        <div class="list-body">
+            <ul class="list">
+                
+            </ul>
+        </div>
+    </div>
+
+
+
+</body>
+</html>
+
+<script>
+    const list = document.querySelector(".list");
+    const input = document.querySelector(".input");
+    let btn = document.querySelector(".button");
+
+    const items = ["rice", "daal", "carrots"];
+    for(let i=0; i<items.length; i++) {
+        const li = document.createElement('li');
+        li.innerText = items[i];
+        li.classList.add("item");
+        let h4 = document.createElement('h4');
+        h4.innerHTML = '<i class = "fa-regular fa-circle-xmark"</i>';
+        h4.classList.add('icon');
+        h4.onclick = function() {
+            items.pop(li.innerText);
+            li.remove();
+        };
+        li.insertAdjacentElement("beforeend", h4);
+        list.appendChild(li);
+    }
+
+
+    btn.addEventListener("click", ()=>{ 
+        if(input.value != "") {
+            const li = document.createElement("li"); 
+            li.innerText = input.value;
+            li.classList.add('item');
+            li.style.margin = ".8rem"
+            items.push(li.innerText);
+            let h4 = document.createElement('h4');
+            h4.innerHTML = '<i class = "fa-regular fa-circle-xmark"</i>';
+            h4.classList.add("icon");
+            h4.onclick = function() {
+                items.pop(li.innerText);
+                li.remove();
+            };
+            li.insertAdjacentElement("beforeend", h4);
+            list.appendChild(li);
+            input.value = "";
+            console.log(items);
+        }
+    });
+
+</script>
