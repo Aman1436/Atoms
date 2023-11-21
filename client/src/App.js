@@ -10,7 +10,7 @@ import {useParams} from 'react-router-dom';
 function App(){
   const {regNo}=useParams();
   const [complaints, setComplaints] = useState([]);
-  useEffect(() => {
+  useEffect(()=>{
     axios.get('http://localhost:8080/regNo/complaint')
       .then(response => {
         return setComplaints(response.data);

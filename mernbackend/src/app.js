@@ -126,7 +126,7 @@ app.post("/signup", async (req, res) => {
 });
 
 //for complaints section
-app.get("/:regNo/complaint", isloggedin, async function (req, res) {
+app.get("/regNo/complaint", async function (req, res) {
   try {
     await Complaint.find()
       .sort({ votes: -1 })
@@ -164,6 +164,18 @@ app.put("/:id/complaint/downvote", async function (req, res) {
     return res.json(err);
   }
 });
+
+app.post("/:regNo/complaint/submit", async (req, res) => {
+    const newcomplaint = await new Complaint({
+      regNo: req.body.regNo,
+      complaint: req.body.complaintText,
+    });
+    await newcomplaint.save();
+    await Complaint.find()
+      .sort({ votes: -1 })
+      .then((allComplaints) => res.json(allComplaints))
+      .catch((err) => res.json(err));
+  });
 
 //Login-professor page
 
@@ -216,18 +228,6 @@ app.get("/home", isloggedin, async (req, res) => {
   } catch (error) {
     console.log(error);
   }
-});
-
-app.post("/:regNo/complaint/submit", async (req, res) => {
-  const newcomplaint = await new Complaint({
-    regNo: req.body.regNo,
-    complaint: req.body.complaintText,
-  });
-  await newcomplaint.save();
-  await Complaint.find()
-    .sort({ votes: -1 })
-    .then((allComplaints) => res.json(allComplaints))
-    .catch((err) => res.json(err));
 });
 
 app.listen(port, () => {
