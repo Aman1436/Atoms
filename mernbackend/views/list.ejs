@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily List</title>
+    <script src="./listApp.js"></script>
     <style>
 
         html {
@@ -195,59 +196,56 @@
     </div>
     <div class="list-box">
         <div class="list-heading">List Items<hr color="white" width="90%"></div>
-        <div class="list-body">
+        <form action="/saveItems" method="post" class="list-body">
             <ul class="list">
                 
             </ul>
         </div>
     </div>
+    <script>
+        const list = document.querySelector(".list");
+const input = document.querySelector(".input");
+let btn = document.querySelector(".button");
+
+let items = [];
+for(let i=0; i<items.length; i++) {
+    const li = document.createElement('li');
+    li.innerText = items[i];
+    li.classList.add("item");
+    let h4 = document.createElement('h4');
+    h4.innerHTML = '<i class = "fa-regular fa-circle-xmark"</i>';
+    h4.classList.add('icon');
+    h4.onclick = function() {
+        items.pop(li.innerText);
+        li.remove();
+    };
+    li.insertAdjacentElement("beforeend", h4);
+    list.appendChild(li);
+}
 
 
-
-</body>
-</html>
-
-<script>
-    const list = document.querySelector(".list");
-    const input = document.querySelector(".input");
-    let btn = document.querySelector(".button");
-
-    const items = ["rice", "daal", "carrots"];
-    for(let i=0; i<items.length; i++) {
-        const li = document.createElement('li');
-        li.innerText = items[i];
-        li.classList.add("item");
+btn.addEventListener("click", ()=>{ 
+    if(input.value != "") {
+        const li = document.createElement("li"); 
+        li.innerText = input.value;
+        li.classList.add('item');
+        li.style.margin = ".8rem"
+        items.push(li.innerText);
         let h4 = document.createElement('h4');
         h4.innerHTML = '<i class = "fa-regular fa-circle-xmark"</i>';
-        h4.classList.add('icon');
+        h4.classList.add("icon");
         h4.onclick = function() {
-            items.pop(li.innerText);
-            li.remove();
+            items.splice(items.indexOf(li.innerText), 1);
+            li.remove(h4.innerText);
         };
         li.insertAdjacentElement("beforeend", h4);
         list.appendChild(li);
+        input.value = "";
     }
+});
 
+module.exports = items;
+    </script>
 
-    btn.addEventListener("click", ()=>{ 
-        if(input.value != "") {
-            const li = document.createElement("li"); 
-            li.innerText = input.value;
-            li.classList.add('item');
-            li.style.margin = ".8rem"
-            items.push(li.innerText);
-            let h4 = document.createElement('h4');
-            h4.innerHTML = '<i class = "fa-regular fa-circle-xmark"</i>';
-            h4.classList.add("icon");
-            h4.onclick = function() {
-                items.pop(li.innerText);
-                li.remove();
-            };
-            li.insertAdjacentElement("beforeend", h4);
-            list.appendChild(li);
-            input.value = "";
-            console.log(items);
-        }
-    });
-
-</script>
+</body>
+</html>

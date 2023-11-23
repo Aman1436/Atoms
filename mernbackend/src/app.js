@@ -18,11 +18,14 @@ const Manager = require("./models/managers");
 const patelNotification = require("./models/patel-notification");
 const tilakNotification = require("./models/tilak-notification");
 const tandonNotification = require("./models/tandon-notification");
+const itemList = require("./models/items");
+const listData = require("../views/listApp");
 
 
 //some middlewares
 app.use(cors());
 app.use(express.static(path.join(__dirname, "../public")));
+app.use(express.static(path.join(__dirname, "../views")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -56,7 +59,6 @@ let dateTime = today.toDateString("en-US", options);
 let hrs = today.getHours();
 let min = today.getMinutes();
 let day = dateTime + "," + hrs + ":" + min;
-
 // Landing page
 app.get("/", (req, res) => {
   res.render("index");
@@ -209,14 +211,14 @@ app.get("/login-manager", (req, res) => {
   res.render("login-manager");
 });
 
-let hostel = "";
+let managerHostel = "";
 
 app.post("/login-manager", async (req, res) => {
   try {
     const managerId = req.body.managerId;
     const password = req.body.password;
     const userInfo = await Manager.findOne({ managerId: managerId });
-    hostel = userInfo.hostel;
+    managerHostel = userInfo.hostel;
     let data = [];  
     if(userInfo.hostel == "patel") {
       data = await patelNotification.find();
@@ -238,26 +240,31 @@ app.post("/login-manager", async (req, res) => {
   }
 });
 
+// Item section 
 app.get("/list", (req, res)=>{
   res.render("list", {day:day});
-})
+});
 
-app.post("/add-message", async (req, res)=>{
+app.post("/add-message", async (req, res) => {
   const m = req.body.newMessage;
     if(m != "") {
-      if(hostel == "patel") {
+      if(managerHostel == "patel") {
         await patelNotification.insertMany([{message:m}]);
       }
-      else if(hostel == "tandon") {
+      else if(managerHostel == "tandon") {
         await tandonNotification.insertMany([{message:m}]);
       }
       else {
         await tilakNotification.insertMany([{message:m}]);
       }
-      res.redirect('back');
+      res.redirect(req.get('referer'));
     } else {
       res.send("Add a message to send the notification");
     }
+})
+
+app.post("/saveItems", async (req,res)=>{
+
 })
 
 // Home page
@@ -293,7 +300,7 @@ app.post("/:regNo/complaint/submit", async (req, res) => {
 });
 
 // Menu page
-app.get("/menu", (req, res) => {
+app.get("/menu",  (req, res) => {
   res.render("menu");
 });
 
@@ -302,6 +309,10 @@ app.get("/contact", (req, res) => {
   res.render("contact");
 });
 
+//About us
+app.get("/about",(req,res)=>{
+  res.render("about");
+})
 
 
 app.listen(port, () => {

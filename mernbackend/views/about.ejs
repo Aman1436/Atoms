@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About us</title>
+    <link rel="stylesheet" href="\css\about.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="company">
+            <div class="heading">
+                <div class="description">
+                    <h3>Explore Culinary Delights at Mess Relay</h3>
+                    <p>Welcome to the virtual gateway of flavor, where culinary excellence meets digital innovation! At Mess Relay, we've curated an online experience that goes beyond the ordinary. Here's why you'll love exploring our website:</p>
+                </div>
+                <img src="/images/test00.jpg" alt="vsdk">
+            </div>
+            <div class="description">
+                <h4><i class="fa-solid fa-circle"></i>A Feast for Your Eyes</h4>
+                <h4><i class="fa-solid fa-circle"></i>Personalized Profiles</h4>
+                <h4><i class="fa-solid fa-circle"></i>Stay Connected</h4>
+                <h4><i class="fa-solid fa-circle"></i>Let your voice heard</h4>
+            </div>
+            <div class="button">
+                <button class="butt right" onclick="swipeRight()">Developers!</button>
+            </div>
+            <div class="social-media">
+                <i class="fa-brands fa-whatsapp"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-linkedin"></i>
+                <i class="fa-brands fa-facebook"></i>
+            </div>
+        </div>
+        <div class="developer">
+            <div class="cards">
+                <div class="sections">
+                    <img src="/images/test00.jpg" alt="vsdk" style="border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;">
+                    <div class="content">
+                        <h3>Chirag Agrawal</h3>
+                    </div>
+                </div>
+                <div class="sections">
+                    <img src="/images/test00.jpg" alt="vsdk" style="border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;">
+                    <div class="content">
+                        <h3>Aditya Chaturvedi</h3>
+                    </div>
+                </div>
+                <div class="sections">
+                    <img src="/images/test00.jpg" alt="vsdk" style="border-radius: 65% 35% 51% 49% / 56% 25% 75% 44%;">
+                    <div class="content">
+                        <h3>Aman Vishwakarma</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="button">
+                <button class="butt left" style="animation: none; opacity: 1;" onclick="swipeLeft()">About</button>
+            </div>
+        </div>
+          
+    </div>
+    
+</body>
+</html> 
+<script>
+    let left = document.querySelector(".left");
+    let right = document.querySelector(".right");
+    let company = document.querySelector(".company");
+    let developer = document.querySelector(".developer");
+
+    const swipeLeft = function() {
+        company.style.left = "0";
+        developer.style.right = "110%"
+    }
+
+    const swipeRight = function() {
+        company.style.left = "-110%";
+        developer.style.right = "0";
+    }
+</script>
