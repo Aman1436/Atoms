@@ -3,8 +3,14 @@
   padding: 0%;
   box-sizing: border-box;
 }
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+
 .app{
-  background-image:url(../../mernbackend/public/images/main-background.jpeg);
+  background:transparent;
   background-attachment:fixed;
   background-size: 100% 100%;
 }
@@ -14,4 +20,5 @@
   flex-direction:column;
   align-items: flex-end;
   width: 200px;
+  margin: 2rem;
 }

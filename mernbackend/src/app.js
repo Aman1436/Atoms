@@ -19,8 +19,6 @@ const patelNotification = require("./models/patel-notification");
 const tilakNotification = require("./models/tilak-notification");
 const tandonNotification = require("./models/tandon-notification");
 const itemList = require("./models/items");
-const listData = require("../views/listApp");
-
 
 //some middlewares
 app.use(cors());
@@ -75,6 +73,7 @@ app.post("/login", async (req, res) => {
     const password = req.body.password;
     const userInfo = await Student.findOne({ regNo: regNo });
     const hostel = userInfo.hostel;
+    const hostel2 = hostel.charAt(0).toUpperCase() + hostel.slice(1);
     const check = await brypt.compare(password, userInfo.password);
     if (check) {
       const token = jwt.sign(
@@ -122,6 +121,7 @@ app.post("/signup", async (req, res) => {
       });
 
       const registered = await student.save();
+      alert("Logged in sucessfully!!!");
       res.status(201).redirect("/login");
     } else {
       res.send("password are not matching");
@@ -219,6 +219,7 @@ app.post("/login-manager", async (req, res) => {
     const password = req.body.password;
     const userInfo = await Manager.findOne({ managerId: managerId });
     managerHostel = userInfo.hostel;
+    const hostel2 = managerHostel.charAt(0).toUpperCase() + managerHostel.slice(1);
     let data = [];  
     if(userInfo.hostel == "patel") {
       data = await patelNotification.find();
@@ -230,7 +231,7 @@ app.post("/login-manager", async (req, res) => {
       data = await tilakNotification.find();
     }
     if (userInfo.password === password) {
-      res.status(201).render("home-manager", {userInfo:userInfo, day: day, data:data});
+      res.status(201).render("home-manager", {userInfo:userInfo, day: day, data:data, hostel2});
     } else {
       res.send("Invalid details render");
     }
@@ -280,7 +281,7 @@ app.get("/home", isloggedin, async (req, res) => {
       res.render("home", { day: day, data: data, userInfo: userInfo });
     } else if (hostel === "tandon") {
       const data = await tandonNotification.find();
-      res.render("home", { day: day, data: data, userInfo: userInfo });
+      res.render("home", { day: day, data: data, userInfo: userInfo});
     }
   } catch (error) {
     console.log(error);

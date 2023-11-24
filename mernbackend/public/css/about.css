@@ -19,7 +19,8 @@ body {
     height: 70%;
     width: 75%;
     box-shadow: 0 0 8px -1px black;
-    background-color: rgba(255, 255, 255, 1);
+    /* background-color: rgba(255, 255, 255, 1); */
+    background-color: rgb(165, 230, 230);
     padding: 2rem;    
     overflow: scroll;
     scroll-margin-bottom: 1rem;
@@ -188,7 +189,7 @@ img:hover {
     height: 12rem;
     width: 15rem;
     margin: 0 0 2rem;
-    animation: none
+    /* animation: none */
 }
 
 .content {

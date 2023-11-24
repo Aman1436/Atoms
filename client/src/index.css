@@ -1,3 +1,5 @@
+
+
 body {
   width: 100vw;height:100vh;
   margin: 0;
@@ -6,6 +8,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url(../../mernbackend/public/images/complain.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 code {
@@ -14,7 +20,5 @@ code {
 }
 #root{
   width: 100vw;height:100vh;
-  background-image: url(../../mernbackend/public/images/home-background.jpg);
-  background-attachment: fixed;
-  background-size: cover;
+
 }
