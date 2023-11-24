@@ -1,64 +1,43 @@
 *{
-  place-content: center;
-  overflow-x: hidden;
+  font-family: 'Amita', serif;
+font-family: 'Satisfy', cursive;
+place-content: center;
 }
-
 body{
-  margin:0;
-  padding:0;
-  box-sizing: border-box;
-  background: url("/images/test1.jpg") no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-} 
-
+  background-color: rgb(240, 240, 150);
+}
 #d12,#d34,#d56,#d7{
   display:flex;
   justify-content: space-evenly;
   margin:10px;
 } 
-  
+
 #d12 .k, #d34 .k, #d56 .k, #d7 .k {
-  border: 2px solid  black;
+  border: 10px double black;
+  border-style:ridge;
   border-radius: 10px;
   margin: 20px;
 }
-
-
 #d12 > div:nth-child(2),#d34 > div:nth-child(2),#d56 > div:nth-child(2),#d7 > div:nth-child(1),
 #d12 > div:nth-child(1),#d34 > div:nth-child(1),#d56 > div:nth-child(1)
 {
-  min-height: 20rem;
-  min-width: 25rem;
   text-align: center;
+  border: 5px ridge black;
   border-radius: 10px;
   margin: 20px;
   padding :10px;
   font-size: 25px;
   font-weight: 500;
-  color: #325359;
-  background-size: cover;
+  color: darkred;
+  background-image: url('back2.avif');
   background-size: 120% 120%;
   background-blend-mode: color-burn;
-  font-weight: 500;
-  word-spacing: 5px;
 }
-  
+
 #d12 > div:nth-child(2),#d12 > div:nth-child(1){
   padding:40px;
 }
 
-.k h3{
-  font-size: 35px;
-  font-weight: 500;
-  text-align: center;
-  margin-top:10px;
-  margin-bottom: 10px;
-  color: #343439;
-  font-weight: 700;
-  font-family: 'Amita', serif;
-  font-family: 'Satisfy';
-}
 
 h1 {
   text-align: center;
@@ -75,66 +54,87 @@ h1 {
 
 }
 
-.k {
-  position: relative;
-  padding: 2rem;
-  box-shadow: 0 0 2px black,
-  0 0 5px black;
-  transition: .5s;
-  overflow: hidden;
-  z-index: 1;
-  font-family: 'EB Garamond', serif;
-}
 
-.k::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: url("../images/boxBc.avif") no-repeat;
-  background-position: center;
-  background-size: cover;
-  filter: blur(2px);
-  z-index: -1;
-}
-
-.k:hover {
-  border-radius: 10px;
-  box-shadow: 0 0 5px black,
-  0 0 25px rgba(0, 0, 0, 0.75), 
-  0 0 50px rgb(0,0,0,0.5),
-  0 0 75px rgba(0, 0, 0, 0.25);
-  scale: 105%;
-}
 
 #d56 > div:nth-child(1),
 #d12 > div:nth-child(1),#d34 > div:nth-child(1)
 {
 
-  animation-duration: 1.5s;
+  animation-duration: 2s;
   animation-direction:normal;
   animation-iteration-count: 1;
+  animation-delay: 0.5s;
   animation-timing-function: ease-in-out;
   animation-name: khisakleft;  
 }
 #d12 > div:nth-child(2),#d34 > div:nth-child(2),#d56 > div:nth-child(2)
 {
-  animation-duration: 1.5s;
+  animation-duration: 2s;
   animation-direction:normal;
   animation-iteration-count: 1;
+  animation-delay: 0.5s;
   animation-timing-function: ease-in-out;
-  animation-name: khisakright; 
+   animation-name: khisakright; 
 }
 #d7> div:nth-child(1)
 {
-  animation-duration: 1.5s;
+  animation-duration: 2s;
   animation-direction:normal;
   animation-iteration-count: 1;
+  animation-delay: 0.5s;
   animation-timing-function: ease-in-out;
-  animation-name: khisakup; 
+   animation-name: khisakup; 
 }
+h3{
+  font-size: 35px;
+  font-weight: 500;
+  text-align: center;
+  margin-top:10px;
+  margin-bottom: 10px;
+  color:rgb(132, 18, 238);
+}
+#title{
+  
+  font-size: 60px;
+  color: red;
+  animation: cursor 1s infinite 0.5s step-end, typing 7s 1 0.5s steps(25);
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 4px solid #000;
+  text-align: center;
+}
+ body{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  
+} 
+.k{
+    box-shadow: 0 0 5px cyan,
+    0 0 25px cyan;
+}
+    .k:hover {
+    box-shadow: 0 0 5px cyan,
+    0 0 25px cyan, 0 0 50px cyan,
+    0 0 100px cyan, 0 0 200px cyan;
+    scale: 110%;
+    }
+
+
+
+/* @keyframes badlo{
+  0%{
+    background-color: rgb(150, 249, 249);
+  }
+  50%
+  {
+    background-color: rgb(231, 231, 93);
+  }
+  100%
+  {
+    background-color: rgb(141, 240, 141);
+  }
+} */
 
 @keyframes khisakleft {
   from{
@@ -163,15 +163,35 @@ h1 {
   } 
 } 
 
+/* #typing{
+  position:relative;
+}
+#typing::after{
+  content:"";
+  position: absolute;
+  left:0;
+  height: 100%;
+  width: 100%;
+  border-left:2px solid black;
+  animation:type 1.5s steps(10) infinite;
+} */
+
+@keyframes type{
+  100%{
+    left:100%;
+    margin:0 -35px 0 35px;
+  }
+}
+
 @keyframes cursor{
   0%, 100%{border-color: transparent;}
   50%{border-color: rgba(255, 255, 255, 0.8)}
 }
 
 @keyframes typing{
-  0%{ width: 0ch} 
-  30%{ width: 16ch;} 
-  80%{ width: 100%;} 
-  90%{ width: 0ch;} 
-  100%{ width: 0ch;}
-}
+  0%{ width: 0ch;text-align:center;} 
+  30%{ width: 16ch;text-align:center;} 
+  80%{ width: 100%;text-align:center;} 
+  90%{ width: 0ch;text-align:center;} 
+  100%{ width: 0ch;text-align:center;}
+} 
