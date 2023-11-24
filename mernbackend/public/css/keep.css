@@ -1,0 +1,313 @@
+body {
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+}
+
+body::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    background: url("/images/main-background.jpeg") no-repeat;
+    background-size: cover;
+    z-index: -11;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    position: relative;
+    top: 0;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+.sections {
+    display: flex;
+}
+
+.student-info {
+    position: relative;
+    max-width: fit-content;
+    margin-left: 2rem;
+}
+
+.student-info .name {
+    position: relative;
+}
+.student-info .regno {
+    position: relative;
+}
+
+.student-info p {
+    margin-left: 2rem;
+    margin-top: 1rem;
+    color: white;
+    font-size: 1rem;
+}
+
+.content {
+    width: 70%;
+    height: fit-content;
+}
+
+.notification {
+    width: 22rem;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    height: fit-content;
+}
+
+.notification .notification-box {
+    position: relative;
+    overflow: scroll;
+    overflow-x: hidden;
+    margin: 1rem 1.2rem 0 1rem;
+    padding: 6px;
+    height: 25rem;
+    width: 87%;
+    border-radius: 0.7rem;
+    box-shadow: 0 0 8px -1px black;
+    background: url("/images/notification-background.jpg");
+    background-size: cover;
+    display: none;
+    animation: fade-in 499ms forwards;
+}
+
+.notification .notification-box::-webkit-scrollbar {
+    width: 0.8rem;
+}
+
+.notification .notification-box::-webkit-scrollbar-track {
+    background: rgb(255, 255, 255, 0.4);
+}
+
+.notification .notification-box::-webkit-scrollbar-thumb {
+    background: rgb(255, 255, 255, 0.8);
+}
+
+.notification .notification-icon {
+    height: 2rem;
+    width: 2rem;
+    margin: 2rem 2rem 0 2rem;
+    border: 2px solid white;
+    border-radius: 5px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.notification .notification-icon:hover {
+    height: 2.2rem;
+    width: 2.2rem;
+}
+
+.notification .notification-icon i:hover {
+    font-size: 1.2rem;
+    animation: ring 1.5s 0s 2 alternate;
+}
+
+.notification-box .notification-message {
+    height: fit-content;
+    max-width: fit-content;
+    background-color: rgb(210, 255, 205);
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 6px;
+    box-shadow: 0 0 2px -1px black;
+    
+}
+
+.notification-box .notification-message p {
+    margin-bottom: 0;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-align: left;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+.notification-container .date {
+    width: 100%;
+    text-align: center;
+    justify-self: center;
+    font-size: 0.55rem;
+    color: rgb(255, 255, 255, 0.8);
+    padding: 0.5rem;
+}
+
+.date .date-box {
+    height: 100%;
+    width: fit-content;
+    background-color: rgb(0, 0, 0, 0.6);
+    padding: 6px 8px;
+    border-radius: 1rem;
+}
+
+.createNotification {
+    position: sticky;
+    margin-top: 1rem;
+    top: 22rem;
+    margin-bottom: 1rem;
+    z-index: 2;
+}
+
+form {
+    display: flex;
+    justify-content: space-between;
+}
+
+#newMessage {
+    position:sticky;
+    width: 85%;
+    border-radius: 50rem;
+    height: 2rem;
+    border: none;
+    outline: none;
+    font-size: 0.7rem;
+    padding: 0.5rem;
+}
+
+#newMessage::placeholder {
+    font-size: 0.8rem;
+}
+
+.send {
+    border-radius: 50%;
+    color: rgb(210, 255, 205);
+    background-color: rgb(0, 0, 0, 0.9);
+    box-shadow: 0 0 4px -1px white;
+    border: none;
+    outline: none;
+}
+
+.send .icon {
+    position: relative;
+    left: -1px;
+}
+
+/* Slider starts */
+.slider {
+    margin: 2rem 2rem;
+    height: 25rem;
+    width: 46.8rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 0 8px -1px black;
+    border: 2px solid rgb(255, 255, 255, 0.1);
+}
+
+.slides {
+    display: flex !important;
+}
+
+.slider img{
+    height: 25rem;
+    width: 47rem;
+    border-radius: 1rem;
+    padding: 2px;
+    padding-right: 10px;
+    background-color: rgb(255, 255, 255, 0.4);
+}
+
+.slides input{
+    display: none; 
+}
+
+.slide {
+    width: 100%;
+    transition: 2s;
+}
+
+/* css for mannual slide navigation */
+.navigation-manual {
+    width: 100%;
+    margin-top: -40px;
+    display: flex;
+    justify-content:center;
+}
+
+.manual-btn {
+    border: 2px solid rgb(0, 0, 0, 0.6);;
+    padding: 3px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+    margin-right: 1.7rem;
+}
+
+.manual-btn:hover {
+    background-color: grey;
+}
+
+#radio1:checked ~ .first{
+    margin-left: 0;
+}
+
+#radio2:checked ~ .first{
+    margin-left: -100%;
+}
+
+#radio3:checked ~ .first{
+    margin-left: -200%;
+}
+
+#radio4:checked ~ .first{
+    margin-left: -300%;
+}
+
+#radio5:checked ~ .first{
+    margin-left: -400%;
+}
+
+/* .slides .text {
+    position: absolute;
+    color: white;
+    z-index: 10;
+} */
+
+/* Slider ends */
+
+
+
+
+/* keyframes */
+@keyframes showRight {
+    from {
+        left: 0%;
+    } to {
+        left: 100%;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(45deg);
+    }
+    50% {
+        transform: rotate(-45deg);
+    } 
+    100% {
+        transform: rotate(45deg);
+    }
+}
