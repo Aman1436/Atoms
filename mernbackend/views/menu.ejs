@@ -7,22 +7,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mess Menu</title>
-    <link rel="stylesheet" href="/mernbackend/public/css/menu.css">
+    <link rel="stylesheet" href="\css\mess_menu.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@600&family=Poppins:wght@300;400;600;700&family=Prata&family=Sanchez&family=Satisfy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;600;700&family=Prata&family=Sanchez&family=Satisfy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
   </head>
   <body>
     <!--title-->
-    <div>
-    <h1 id="title">Welcome to Patel Hostel Mess Menu</h1>
-    </div>
-    <!--Monday,Tuesday-->
-    <div id="d12">
-      <!--Monday-->
-      <div class="k">
-        <h3>Monday</h3>
-        <p>BreakFast: Idli-Sambhar,Milk,Sprouts,Banana</p>
-        <p>Lunch: Paneer,puri,pulao,Gulab-Jamun</p>
-        <p>Evening: Samosa,Green Chutney,Tea</p>
-        <p>Dinner: Soyabean aloo,Roti,Rice,custard</p>
+    <div style="display: flex; align-items: center; justify-content: center; background-color: rgba(255, 255, 255, 0.1);">
+      <h1>Welcome to Patel Hostel Mess Menu ...</h1>
+      </div>
+      <!--Monday,Tuesday-->
+      <div id="d12">
+        <!--Monday-->
+        <div class="k">
+          <h3>Monday</h3>
+          <p>BreakFast: Idli-Sambhar, Milk, Sprouts, Banana</p>
+        <p>Lunch: Paneer, puri, pulao, Gulab-Jamun</p>
+        <p>Evening: Samosa, Green Chutney, Tea</p>
+        <p>Dinner: Soyabean aloo, Roti, Rice, Custard</p>
       </div>
       <!-- Tuesday -->
       <div class="k">
@@ -42,12 +47,11 @@
         <p>Evening: Dhokla, Tamarind Chutney, Tea</p>
         <p>Dinner: Palak Paneer, Roti, Jeera Rice, Fruit Salad</p>
       </div>
-
       <!-- Thursday -->
       <div class="k">
         <h3>Thursday</h3>
         <p>Breakfast: Daliya, Curd, Orange</p>
-        <p>Lunch: Chana Masala, Chapati, Brown Rice, Cucumber Raita</p>
+        <p>Lunch: Chana Masala, Chapati, Brown Rice,<br>Cucumber Raita</p>
         <p>Evening: Aloo Tikki, Yogurt Dip, Chaas</p>
         <p>Dinner: Mix Veg Curry, Paratha, Pulao, Shahi Tukda</p>
       </div>
@@ -59,14 +63,14 @@
         <p>Breakfast: Vegetable Sandwich, Banana Shake</p>
         <p>Lunch: Aloo Gobi, Phulka, Jeera Rice, Boondi Raita</p>
         <p>Evening: Vegetable Pakora, Mint Yogurt Sauce, Tea</p>
-        <p>Dinner: Dal Makhani, Naan, Steamed Rice, Fruit Custard</p>
+        <p>Dinner: Dal Makhani, Naan, Steamed Rice,<br> Fruit Custard</p>
       </div >
 
       <!-- Saturday -->
       <div class="k">
         <h3>Saturday</h3>
         <p>Breakfast: Rava Upma, Buttermilk, Grapes</p>
-        <p>Lunch: Baingan Bharta, Chapati, Vegetable Pulao, Cucumber Raita</p>
+        <p>Lunch: Baingan Bharta, Chapati, Vegetable Pulao,<br> Cucumber Raita</p>
         <p>Evening: Kachori, Tamarind Chutney, Chaas</p>
         <p>Dinner: Kadai Paneer, Roti, Jeera Rice, Gajar Ka Halwa</p>
       </div>
@@ -77,18 +81,17 @@
         <h3>Sunday</h3>
         <p>Breakfast: Masala Dosa, Coconut Chutney, Pineapple</p>
         <p>Lunch: Dum Aloo, Naan, Steamed Rice, Boondi Raita</p>
-        <p>Evening: Vegetable Spring Rolls, Sweet Chili Sauce, Tea</p>
-        <p>Dinner: Vegetable Korma, Paratha, Jeera Rice, Mango Lassi</p>
+        <p>Evening: Vegetable Spring Rolls,Chili Sauce, Tea</p>
+        <p>Dinner: Vegetable Korma, Paratha, Jeera Rice,<br> Mango Lassi</p>
       </div>
     </div>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+      document.addEventListener("DOMContentLoaded", function () {
   const containers = document.querySelectorAll(".container > div");
   containers.forEach(container => {
     container.classList.add("animate");
   });
 });
-
     </script>
   </body>
 </html>

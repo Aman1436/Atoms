@@ -96,9 +96,6 @@ img {
     border: none;
     box-shadow: 0 0 8px -1px black;
     border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
-}
-
-img:hover {
     animation: animate 5s ease-in-out infinite;
 }
 
