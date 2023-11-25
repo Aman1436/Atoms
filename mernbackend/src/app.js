@@ -315,6 +315,11 @@ app.get("/about",(req,res)=>{
   res.render("about");
 })
 
+// Special Thanks
+app.get("/specialThanks",(req,res)=>{
+  res.render("thanks");
+})
+
 
 app.listen(port, () => {
   console.log("Server is running at port ", port);
